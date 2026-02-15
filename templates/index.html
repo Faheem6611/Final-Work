@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Tab Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>ReviewShield</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="registration">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="working">Working</a>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="Check">Check Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="faqs">FAQs</a>
+                    </li>
+                </ul>
+
+                <!-- Profile Section -->
+               <div id="profile-section" style="display:none;">
+    <span id="profile-name"></span>
+    <button id="profile-logout">Logout</button>
+</div>
+ <div class="nav-right">
+                    <img src="{{ url_for('static', filename='download.png') }}" alt="Profile" id="profile-pic" class="profile-pic">
+                    <span id="profile-name"></span>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Home Tab -->
+        <div id="home" class="tab-content active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to ReviewShield <br> An AI Powered Fake Review Detector.</h1>
+                    <p><strong>With the rise of online shopping, misleading reviews have become a growing problem. This system helps users determine whether a review is genuine or fake using machine learning and natural language processing (NLP).</strong></p>
+                    <button class="cta-button">Get Started</button>
+                </div>
+            </section>
+            <section class="features">
+                <div class="container">
+                    <h2>Our Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Easy to Use</h3>
+                            <p>Our platform is designed with user experience in mind.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Secure</h3>
+                            <p>Your data is protected with industry-standard security measures.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Fast</h3>
+                            <p>Lightning-fast performance for all your needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Registration Tab -->
+        <div id="registration" class="tab-content">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn active" data-form="login">Login</button>
+                    <button class="auth-tab-btn" data-form="signup">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h2>Login to Your Account</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email:</label>
+                            <input type="email" id="login-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="auth-button">Login</button>
+                        <p class="auth-link">Don't have an account? <a href="#" onclick="switchAuthForm('signup')">Sign up here</a></p>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form">
+                    <h2>Create New Account</h2>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-name">Full Name:</label>
+                            <input type="text" id="signup-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email:</label>
+                            <input type="email" id="signup-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password:</label>
+                            <input type="password" id="signup-password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm">Confirm Password:</label>
+                            <input type="password" id="signup-confirm" name="confirm-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required> I agree to the Terms and Conditions
+                            </label>
+                        </div>
+                        <button type="submit" class="auth-button">Sign Up</button>
+                        <p class="auth-link">Already have an account? <a href="#" onclick="switchAuthForm('login')">Login here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Working Tab -->
+        <div id="working" class="tab-content">
+            <div class="container">
+                <h1>How We Work</h1>
+                <div class="working-process">
+                    <div class="process-step">
+                        <h3>1 <br>Submit Review</h3>
+                        <p>Enter the review text into the input field on the website.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>2 <br>Preprocess Text</h3>
+                        <p>The system cleans and prepares the review for analysis.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>3 <br> Analyze with AI</h3>
+                        <p>A trained machine learning model evaluates the review content.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>4 <br>Get Result</h3>
+                        <p>The system displays whether the review is genuine or fake.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Check Review Tab -->
+       <!-- Check Review Tab -->
+<div id="Check" class="tab-content">
+    <h1>Check Review</h1>
+    <form id="check-review-form">
+        <div class="form-group">
+            <label for="review-text">Paste Review Text Here:</label>
+            <textarea id="review-text" name="review" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="contact-button" id="checkBtn">Check Review</button>
+    </form>
+
+    <!-- Modal for Review Result -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Review Analysis</h2>
+            <p><strong>Review:</strong> <span id="modalReview"></span></p>
+            <p><strong>Prediction:</strong> <span id="modalPrediction"></span></p>
+            <p><strong>Confidence:</strong> <span id="modalConfidence"></span>%</p>
+        </div>
+    </div>
+</div>
+
+        <!-- Contact Tab -->
+<div id="contact" class="tab-content"> 
+    <!-- Left: Contact Info --> <div class="contact-info">
+         <h3>Get in Touch</h3> 
+         <div class="contact-item"> <strong>Address:</strong>
+             <p>Superior College Jauharabad<br>Khushab, 41000</p>
+             </div> 
+             <div class="contact-item"> <strong>Phone:</strong> <p>+92-308-5563231</p>
+             </div> 
+             <div class="contact-item"> <strong>Email:</strong> <p>muhammadfaheemiqbal297@gmail.com</p>
+             </div> 
+             <div class="contact-item"> <a href="https://github.com/Faheem611">Github Profile </a>
+             </div> 
+             <h3>Send us a Message</h3> 
+             <form id="contact-form"> 
+                <div class="form-group"> 
+                    <label for="contact-name">Name:</label> 
+                    <input type="text" id="contact-name" name="name" required>
+             </div> 
+             <div class="form-group"> 
+                <label for="contact-email">Email:</label>
+                 <input type="email" id="contact-email" name="email" required>
+             </div>
+              <div class="form-group"> 
+                <label for="contact-subject">Subject:</label> 
+                <input type="text" id="contact-subject" name="subject" required>
+             </div> 
+             <div class="form-group"> 
+                <label for="contact-message-text">Message:</label>
+                <textarea id="contact-message-text" name="message" rows="5" required></textarea>
+             </div> 
+             <button type="submit" class="contact-button">Send Message</button>
+             </form> 
+             <div id="contact-result"></div>
+            </div> 
+        </div> 
+    </div>
+     <!-- About Tab --> 
+      <div id="about" class="tab-content"> 
+        <div class="container"> 
+            <h1>About Us</h1>
+             <div class="about-content"> 
+                <div class="about-text"> 
+                    <h2>About This Project</h2>
+                     <p>We are a group of final year Bachelor of Science in Computer Science (BSCS) students.As part of our Final Year Project (FYP), we designed and developed the Fake Review Detector, an AI-powered web tool that analyzes the authenticity of product or service reviews using machine learning algorithms.This project was inspired by the increasing influence of online reviews on consumer decisions and the growing challenge of detecting fake or manipulated content. Our goal was to build a lightweight, user-friendly system that empowers users and businesses to make more informed choices.</p> 
+                     <h2>Acknowledgment</h2>
+                      <p>We are sincerely grateful to our supervisor, Professor Shahid Mehmood, for his constant guidance, encouragement, and support throughout the course of this project. His expertise and research methodology greatly enhanced the quality of our work.</p>
+             </div> 
+             <div class="team-section">
+                 <h2>Our Team</h2> 
+                 <div class="team-grid"> 
+                    <div class="team-member">
+                         <h4>M.Faheem Iqbal</h4>
+                          <p>Developer</p> 
+                        </div>
+              <div class="team-member"> <h4>M.Saqlain Saleem</h4> <p>Co-Developer</p> </div>
+               <div class="team-member"> <h4>Professor Shahid Mehmood</h4> <p>Project Supervisor</p>
+             </div> 
+            </div>
+         </div> 
+        </div>
+     </div> 
+    </div> 
+    <!-- FAQs Tab -->
+      <div id="faqs" class="tab-content"> <div class="container"> <h1>Frequently Asked Questions</h1>
+         <div class="accordion"> <div class="accordion-item"> 
+            <button class="accordion-header">What is the Fake Review Detector?<span class="icon">+</span></button>
+             <div class="accordion-content"> <p>It is an AI-based system that helps users identify whether a given product or service review is genuine or fake.</p> </div> 
+            </div>
+             <div class="accordion-item"> <button class="accordion-header">How does it work?<span class="icon">+</span></button> 
+                <div class="accordion-content"> <p>The system uses machine learning and natural language processing techniques to analyze the text and predict its authenticity.</p> </div>
+             </div> 
+             <div class="accordion-item"> <button class="accordion-header">Do I need to sign up to use it?<span class="icon">+</span></button> <div class="accordion-content"> <p>No, the tool can be used without creating an account. However, registered users may access more features.</p> </div>
+             </div> 
+             <div class="accordion-item"> <button class="accordion-header">Is my data stored?<span class="icon">+</span></button> <div class="accordion-content"> <p>No, all reviews are processed in real-time and not stored unless the user opts in for saving data.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">What is the accuracy of the detection?<span class="icon">+</span></button> <div class="accordion-content"> <p>Our model achieves a high accuracy rate based on training over thousands of real and fake reviews.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">Can this system detect reviews in other languages?<span class="icon">+</span></button> <div class="accordion-content"> <p>Currently, our model is trained on English reviews. However, multilingual support is part of our future enhancements.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">Is the model trained on real-world data?<span class="icon">+</span></button> <div class="accordion-content"> <p>Yes, the model is trained on publicly available datasets consisting of both genuine and fake reviews to ensure reliability.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">Can businesses integrate this into their websites?<span class="icon">+</span></button> <div class="accordion-content"> <p>In the future, we plan to offer API access so businesses can integrate our fake review detector into their platforms.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">How do I report an issue or bug?<span class="icon">+</span></button> <div class="accordion-content"> <p>You can report issues via the Contact Us form. We appreciate user feedback to improve the system.</p> </div> </div> <div class="accordion-item"> <button class="accordion-header">Will the project be open-sourced?<span class="icon">+</span></button> <div class="accordion-content"> <p>We are considering making parts of the project open-source after the completion of our academic requirements.</p> </div> </div> </div> </div> </div> </div> </main> <footer> <div class="container"> <p>&copy; 2025 ReviewShield. All rights reserved.</p> </div> </footer> <script src="{{ url_for('static', filename='script.js') }}"></script> </body> </html>
+
